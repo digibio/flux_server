@@ -3,9 +3,8 @@
 </head>
 
 <body>
-  <script src="http://cdn.jsdelivr.net/sparkjs/0.5.2/spark.min.js"></script>
   
-  <h1>Welcome to whatever!</h1>
+  <h1>Welcome </h1>
 
   {{> hello}}
 </body>
@@ -13,6 +12,5 @@
 
 
 <template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+  <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
 </template>
