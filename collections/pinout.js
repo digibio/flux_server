@@ -1,0 +1,1 @@
+Pinouts = new Mongo.Collection("pinouts");
