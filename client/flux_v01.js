@@ -47,27 +47,42 @@ Template.flux.events({
   },
 
   "click .flux_1": function(evt) {
+
     // Set the checked property to the opposite of its current value
     console.log("flux 1 with id: " + evt.currentTarget.id);
     var s = Snap(".flux_1");
     var flux_1 = Session.get("flux_1");
 
+    cb = function(err, data) {
+      console.log("err: " + JSON.stringify(err));
+      console.log("data: " + JSON.stringify(data));
+      console.log("flux_1 cached session: " + flux_1);
+      if (flux_1) {
+        s.attr({
+          fill: "#fff",
+          stroke: "#fff"
+        });
+      }
+      else {
+        s.attr({
+          stroke: "#000",
+          strokeWidth: 5
+        });
+        
+        
+      }
+    };
+
     // return_value
     if (flux_1 == false) {
       Session.set("flux_1", true);
-      spark.callFunction(devId, 'led', 'flux_1_on', callback);
-      s.attr({
-        stroke: "#000",
-        strokeWidth: 5
-      });
+      spark.callFunction(devId, 'led', 'flux_1_on', cb);
+
     }
     else {
       Session.set("flux_1", false);
-      s.attr({
-        fill: "#fff",
-        stroke: "#fff"
-      });
-      spark.callFunction(devId, 'led', 'flux_1_off', callback);
+
+      spark.callFunction(devId, 'led', 'flux_1_off', cb);
 
       //spark.callFunction(devId, 'led', Session.get('toggle1')?'off':'on', callback);
       //Session.set('toggle1', ! Session.get('toggle1'));
@@ -82,20 +97,34 @@ Template.flux.events({
     // and set the stroke with a function a lot less code
     var s = Snap(".flux_2");
     var flux_1 = Session.get("flux_2");
+        cb = function(err, data) {
+      console.log("err: " + JSON.stringify(err));
+      console.log("data: " + JSON.stringify(data));
+      console.log("flux_1 cached session: " + flux_1);
+      if (flux_1) {
+        s.attr({
+          fill: "#fff",
+          stroke: "#fff"
+        });
+      }
+      else {
+        s.attr({
+          stroke: "#000",
+          strokeWidth: 5
+        });
+        
+        
+      }
+    };
+    
     if (flux_1 == false) {
       Session.set("flux_2", true);
 
-      s.attr({
-        stroke: "#000",
-        strokeWidth: 5
-      });
+      spark.callFunction(devId, 'led', 'flux_2_on', cb);
     }
     else {
       Session.set("flux_2", false);
-      s.attr({
-        fill: "#fff",
-        stroke: "#fff"
-      });
+      spark.callFunction(devId, 'led', 'flux_2_off', cb);
     }
 
     //spark.callFunction(devId, 'led', Session.get('toggle1')?'off':'on', callback);
