@@ -7,6 +7,9 @@ being in early development stages, the only supported prototyping interface is a
 
 right now, only pinouts are being controlled. This is to be overlayed with a semantic layer representing the network edges between the addressed fluxels, so that droplet algorithms can be run on it. 
 
+This is a meteor project. To run it, install meteor (www.meteor.com) and simply type: `meteor` on the command line. 
+because it is for prototyping, all collections are autopublish and insecure are still on.  
+
 Todo for now: 
 1.
 - create a record-and-play interface for the fluxel algorithm
