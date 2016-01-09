@@ -21,3 +21,5 @@ insecure                # Allow all DB writes from clients (for prototyping)
 jeremy:snapsvg
 accounts-ui
 accounts-password
+check
+matb33:collection-hooks

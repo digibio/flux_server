@@ -1,17 +1,38 @@
 <head>
-  <title>flux_v01</title>
+  <title>flux server</title>
 </head>
 
 <body>
-  <header>
-    <h1>Fluxl server</h1>
+<div id='container'>
+  <section id=menu>
     {{> loginButtons}}
-  </header>
+    {{#if currentUser}}
+    <form class='add_device'>
+      add a device:
+      <input type='text' name='name' placeholder='name'>
+      <input type='text' name='devId' placeHolder='Device Id'>
+      <input type='text' name='accessToken' placeholder='Access token'>
+      <input type='submit' value='add'>
+    </form>
+    {{/if}}
+    
+    {{#each device}}
+    {{>template device_listing}}
+    {{/each}}
+  </section>
+
+  <div id="content">
   {{> flux}}
+  </div>
+</div>
 </body>
 
 
 <template name="flux">
   <div class='fluxelmap'>
   </div>
+</template>
+
+<template name="device_listing">
+  {{ name }}
 </template>
