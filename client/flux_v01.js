@@ -1,20 +1,3 @@
-// counter starts at 0
-Session.setDefault('toggle1', false);
-Session.setDefault('flux_1', false);
-Session.setDefault('flux_2', false);
-Session.setDefault('flux_3', false);
-Session.setDefault('flux_4', false);
-Session.setDefault('flux_5', false);
-Session.setDefault('flux_6', false);
-Session.setDefault('flux_7', false);
-Session.setDefault('flux_8', false);
-Session.setDefault('flux_9', false);
-Session.setDefault('flux_10', false);
-Session.setDefault('flux_11', false);
-Session.setDefault('flux_12', false);
-Session.setDefault('flux_13', false);
-Session.setDefault('flux_14', false);
-
 var devId = '260039000347343233323032';
 
 Template.flux.rendered = function() {
@@ -23,232 +6,38 @@ Template.flux.rendered = function() {
     accessToken: 'fad8cca1f42bd758b7c5684e665123d41c38b632'
   });
 
+  var s = Snap('.fluxelmap');
+  Snap.load("../flux.svg", function(fluxelmap) {
+      s.append(fluxelmap);
+  });
+
 }
 
+var fluxelclick = function(evt) {
+    //TODO: update this function to represent the actual state of the fluxel and be responsive
+    var flux_id = evt.currentTarget.id;
+    var s = Snap("#" + flux_id);
+    var flux_state = Session.get(flux_id);
+    cb = function(err, data) {
+        console.log("err: " + JSON.stringify(err));
+        console.log("data: " + JSON.stringify(data));
+        if(err){
+            //TODO: also catch http errors
+            return
+        };
+        evt.currentTarget.setAttribute('stroke', flux_state?"#000":"");
+        evt.currentTarget.setAttribute('strokeWidth', flux_state ? 0 : 5);
+        evt.currentTarget.setAttribute('fill', flux_state ? "#fff" : "");
+    };
 
-var callback = function(err, data) {
-  if (err) {
-    console.log('An error occurred while getting core attrs:', err);
-  }
-  else {
-    console.log('Core attr retrieved successfully:', data);
-
-  }
-};
+    Session.set(flux_id, !flux_state);
+    spark.callFunction(devId, 'led', flux_state? 'flux_1_off':'flux_1_on', cb);
+}
 
 Template.flux.events({
-
-  "click .flux_5": function(evt) {
+  "click .st0": function(evt) {
     // Set the checked property to the opposite of its current value
-    console.log("flux 5 clicked custom event listener");
-
-    //spark.callFunction(devId, 'led', Session.get('toggle1')?'off':'on', callback);
-    //Session.set('toggle1', ! Session.get('toggle1'));
-  },
-
-  "click .flux_1": function(evt) {
-
-    // Set the checked property to the opposite of its current value
-    console.log("flux 1 with id: " + evt.currentTarget.id);
-    var s = Snap(".flux_1");
-    var flux_1 = Session.get("flux_1");
-
-    cb = function(err, data) {
-      console.log("err: " + JSON.stringify(err));
-      console.log("data: " + JSON.stringify(data));
-      console.log("flux_1 cached session: " + flux_1);
-      if (flux_1) {
-        s.attr({
-          fill: "#fff",
-          stroke: "#fff"
-        });
-      }
-      else {
-        s.attr({
-          stroke: "#000",
-          strokeWidth: 5
-        });
-        
-        
-      }
-    };
-
-    // return_value
-    if (flux_1 == false) {
-      Session.set("flux_1", true);
-      spark.callFunction(devId, 'led', 'flux_1_on', cb);
-
-    }
-    else {
-      Session.set("flux_1", false);
-
-      spark.callFunction(devId, 'led', 'flux_1_off', cb);
-
-      //spark.callFunction(devId, 'led', Session.get('toggle1')?'off':'on', callback);
-      //Session.set('toggle1', ! Session.get('toggle1'));
-    } //end else
-  },
-
-  "click .flux_2": function(evt) {
-    // Set the checked property to the opposite of its current value
-    console.log("flux 2 clicked custom event listener");
-    // we can check the evt.currentTarget ...
-    // derive the class and base on that get the element with snap
-    // and set the stroke with a function a lot less code
-    var s = Snap(".flux_2");
-    var flux_1 = Session.get("flux_2");
-        cb = function(err, data) {
-      console.log("err: " + JSON.stringify(err));
-      console.log("data: " + JSON.stringify(data));
-      console.log("flux_1 cached session: " + flux_1);
-      if (flux_1) {
-        s.attr({
-          fill: "#fff",
-          stroke: "#fff"
-        });
-      }
-      else {
-        s.attr({
-          stroke: "#000",
-          strokeWidth: 5
-        });
-        
-        
-      }
-    };
-    
-    if (flux_1 == false) {
-      Session.set("flux_2", true);
-
-      spark.callFunction(devId, 'led', 'flux_2_on', cb);
-    }
-    else {
-      Session.set("flux_2", false);
-      spark.callFunction(devId, 'led', 'flux_2_off', cb);
-    }
-
-    //spark.callFunction(devId, 'led', Session.get('toggle1')?'off':'on', callback);
-    //Session.set('toggle1', ! Session.get('toggle1'));
-  },
-
-  "click .flux_3": function(evt) {
-    // Set the checked property to the opposite of its current value
-    console.log("flux 3 clicked custom event listener");
-    // we can check the evt.currentTarget ...
-    // derive the class and base on that get the element with snap
-    // and set the stroke with a function a lot less code
-    var s = Snap(".flux_3");
-    var flux_1 = Session.get("flux_3");
-    if (flux_1 == false) {
-      Session.set("flux_3", true);
-
-      s.attr({
-        stroke: "#000",
-        strokeWidth: 5
-      });
-    }
-    else {
-      Session.set("flux_3", false);
-      s.attr({
-        fill: "#fff",
-        stroke: "#fff"
-      });
-    }
-
-    //spark.callFunction(devId, 'led', Session.get('toggle1')?'off':'on', callback);
-    //Session.set('toggle1', ! Session.get('toggle1'));
-  },
-
-  "click .flux_4": function(evt) {
-    // Set the checked property to the opposite of its current value
-    console.log("flux 4 clicked custom event listener");
-    // we can check the evt.currentTarget ...
-    // derive the class and base on that get the element with snap
-    // and set the stroke with a function a lot less code
-    var s = Snap(".flux_4");
-    var flux_1 = Session.get("flux_4");
-    if (flux_1 == false) {
-      Session.set("flux_4", true);
-
-      s.attr({
-        stroke: "#000",
-        strokeWidth: 5
-      });
-    }
-    else {
-      Session.set("flux_4", false);
-      s.attr({
-        fill: "#fff",
-        stroke: "#fff"
-      });
-    }
-
-    //spark.callFunction(devId, 'led', Session.get('toggle1')?'off':'on', callback);
-    //Session.set('toggle1', ! Session.get('toggle1'));
-  },
-
-  "click .flux_5": function(evt) {
-    // Set the checked property to the opposite of its current value
-    console.log("flux 5 clicked custom event listener");
-
-    // we can check the evt.currentTarget ...
-    // derive the class and base on that get the element with snap
-    // and set the stroke with a function a lot less code
-    var s = Snap(".flux_5");
-    var flux_1 = Session.get("flux_5");
-    if (flux_1 == false) {
-      Session.set("flux_5", true);
-
-      s.attr({
-        stroke: "#000",
-        strokeWidth: 5
-      });
-
-    }
-    else {
-      Session.set("flux_5", false);
-      s.attr({
-        fill: "#fff",
-        stroke: "#fff"
-      });
-    }
-
-    //spark.callFunction(devId, 'led', Session.get('toggle1')?'off':'on', callback);
-    //Session.set('toggle1', ! Session.get('toggle1'));
-  },
-
-  "click .flux_6": function(evt) {
-    // Set the checked property to the opposite of its current value
-    console.log("flux 6 clicked custom event listener");
-
-    // we can check the evt.currentTarget ...
-    // derive the class and base on that get the element with snap
-    // and set the stroke with a function a lot less code
-    var s = Snap(".flux_6");
-    var flux_1 = Session.get("flux_6");
-    if (flux_1 == false) {
-      Session.set("flux_6", true);
-
-      s.attr({
-        stroke: "#000",
-        strokeWidth: 5
-      });
-    }
-    else {
-      Session.set("flux_6", false);
-      s.attr({
-        fill: "#fff",
-        stroke: "#fff"
-      });
-    }
-
-    //spark.callFunction(devId, 'led', Session.get('toggle1')?'off':'on', callback);
-    //Session.set('toggle1', ! Session.get('toggle1'));
-  },
-
-  "click": function(evt) {
-    // Set the checked property to the opposite of its current value
-    console.log("flug: " + evt.currentTarget.id + " Clicked!");
+    console.log("flug: " + this.id + " Clicked!");
 
     switch (evt.currentTarget.id) {
       case "XMLID_24_":
@@ -296,9 +85,7 @@ Template.flux.events({
       default:
         console.log("other clicked");
     }
-    //console.log("flux cilcked");
-
-    //spark.callFunction(devId, 'led', Session.get('toggle1')?'off':'on', callback);
+    fluxelclick(evt);
     //Session.set('toggle1', ! Session.get('toggle1'));
   }
 });
