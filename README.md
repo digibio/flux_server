@@ -11,6 +11,7 @@ This is a meteor project. To run it, install meteor (www.meteor.com) and simply 
 because it is for prototyping, all collections are autopublish and insecure are still on.  
 
 Todo for now: 
+0. read pinout from the hw interface
 1.
 - create a record-and-play interface for the fluxel algorithm
 - create api for the algorithm, which can transfer the algorithm down to the hardware interface and receive information back about the updated state
