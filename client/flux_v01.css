@@ -48,17 +48,18 @@ form {
   margin: 0;
   padding: 0;
 }
-#devices ul li {
+#devices ul li a {
+  color: #E7C3C3;
   transition: color 0.5s ease;
   margin-left: 10px;
 }
-#devices ul li:hover {
+#devices ul li a:hover {
   color: #fad612;
 }
-#devices ul li.active {
+#devices ul li.active a {
   color: #fad612;
 }
-#devices ul li.active:before {
+#devices ul li.active a:before {
   content: "\2192";
 }
 

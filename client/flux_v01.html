@@ -34,12 +34,13 @@
 
 
 <template name="flux">
+  <h2>{{ name }}</h2>
   <div class='fluxelmap'>
   </div>
 </template>
 
 <template name="device_listing">
 <li>
-  {{ name }}
+<a href="/devices/{{ _id }}">{{ name }}</a>
 </li>
 </template>

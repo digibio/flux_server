@@ -21,6 +21,6 @@ Template.body.events({
 Template.body.helpers({
     'devices': function(){
         //TODO: filter on userId
-        return Hardware.find();
+        return Hardware.find({}, {sort: {createdAt: -1}});
     }
 });
