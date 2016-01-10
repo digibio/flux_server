@@ -19,8 +19,16 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 jeremy:snapsvg
-accounts-ui
+#accounts-ui
 accounts-password
 check
 matb33:collection-hooks
 iron:router
+mizzao:bootstrap-3
+#underscore
+sacha:spin
+ian:accounts-ui-bootstrap-3
+fortawesome:fontawesome
+reactive-var
+
+

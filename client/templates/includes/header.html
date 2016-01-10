@@ -1,0 +1,61 @@
+<template name="header">
+
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{pathFor 'flux'}}">Flux</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+          <ul class="nav navbar-nav">
+            {{#if currentUser}}
+                <!-- <li class="{{activeRouteClass 'ZKObjectSubmit'}}"><a href="{{pathFor 'ZKObjectSubmit'}}">New ZKO</a></li> -->
+                <!--<li class="{{activeRouteClass 'audienceKeys'}}"><a href="{{pathFor 'audienceKeys'}}">New Audience </a></li> -->
+
+                <!-- messages summary pop up -->
+                <li class="{{activeRouteClass 'flux'}}" id="menu-zkos">
+                    <a href="#" data-toggle="dropdown" data-target="#menu-flux" class="dropdown-toggle">Flux<b class="caret"></b></a>
+
+                    <ul class="dropdown-menu messages-menu">
+                        <li><a href="{{pathFor 'deviceAdd'}}">Add Device</a></li>
+
+                        <li><a href="{{pathFor 'devicesList'}}">List Devices</a></li>
+                        <li><a href="{{pathFor 'flux'}}">Flux 3 </a></li>
+                        <li><a href="{{pathFor 'flux'}}">flux 4 </a></li>
+
+                        <!-- message nave item -->
+
+
+
+                        <!-- end message nav item -->
+
+                    </ul>
+
+                </li>
+                <!-- end messages summary pop up -->
+                <!-- messages summary pop up -->
+ 
+                <!-- end messages summary pop up -->
+
+    
+                <!-- end messages summary pop up -->
+
+               <!-- <li class="{{activeRouteClass 'eventSubmit'}}"><a href="{{pathFor 'eventSubmit'}}">New Event</a></li>-->
+
+            {{else}} <li><a href="#">Please sign in</a></li>{{/if}}
+          </ul>
+
+
+        <ul class="nav navbar-nav navbar-right">
+          {{> loginButtons}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</template>

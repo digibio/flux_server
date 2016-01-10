@@ -1,0 +1,18 @@
+<template name="devicesList">
+
+    devices list to do get devices from collection for user
+
+    <div id=devices>
+        <b>Devices:</b>
+        <ul>
+            {{#each devices}} {{> device_listing}} {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="device_listing">
+    <li>
+        <!-- <a href="/devices/{{ _id }}">{{ name }}</a> -->
+        <a href="{{pathFor 'flux'}}">{{ name }}</a> <!-- set somehow the current device -->
+    </li>
+</template>

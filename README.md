@@ -17,3 +17,7 @@ Todo for now:
 - create api for the algorithm, which can transfer the algorithm down to the hardware interface and receive information back about the updated state
 2.
 - create database storing a users' devices - and preferably associated fluxel template - where new devices can be found and connected
+
+
+meteor --port $IP:$PORT
+

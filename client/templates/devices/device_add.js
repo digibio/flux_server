@@ -1,5 +1,11 @@
-Template.body.events({
+Template.deviceAdd.rendered = function() {
+
+    
+}
+
+Template.deviceAdd.events({
     'submit .add_device': function(e){
+        console.log("submit add device");
         e.preventDefault();
         Meteor.call('addDevice', {
             name: e.target.name.value,
@@ -10,15 +16,23 @@ Template.body.events({
                 console.log('error occured adding device');
                 //todo: error message in form
             }
-            e.target.name.value = '';
-            e.target.devId.value = '';
-            e.target.accessToken.value = '';
+            if(data){
+                console.log(JSON.stringify(data));
+                Router.go('fluxSelect', {_id: data});
+            }
+            
+            // navigate to list or flux // flux with ide 
+            
+            
+            //e.target.name.value = '';
+            //e.target.devId.value = '';
+            //e.target.accessToken.value = '';
         });
         
     }
 });
 
-Template.body.helpers({
+Template.deviceAdd.helpers({
     'devices': function(){
         //TODO: filter on userId
         return Hardware.find({}, {sort: {createdAt: -1}});
