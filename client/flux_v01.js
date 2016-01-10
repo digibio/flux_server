@@ -1,10 +1,10 @@
-var devId = '260039000347343233323032';
-
 Template.flux.rendered = function() {
   // init.
-  spark.login({
-    accessToken: 'fad8cca1f42bd758b7c5684e665123d41c38b632'
-  });
+  if(Session.get('accessToken')) {
+      spark.login({
+          accessToken: Session.get('accessToken')
+      });
+  }
 
   var s = Snap('.fluxelmap');
   Snap.load("../flux.svg", function(fluxelmap) {
@@ -31,7 +31,7 @@ var fluxelclick = function(evt) {
     };
 
     Session.set(flux_id, !flux_state);
-    spark.callFunction(devId, 'led', flux_state? 'flux_1_off':'flux_1_on', cb);
+    spark.callFunction(Session.get('devId'), 'led', flux_state? 'flux_1_off':'flux_1_on', cb);
 }
 
 Template.flux.events({
