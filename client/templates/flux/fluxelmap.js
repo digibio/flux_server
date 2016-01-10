@@ -22,22 +22,25 @@ var fluxelclick = function(evt) {
         console.log("data: " + JSON.stringify(data));
         if(err){
             //TODO: also catch http errors
-            return
+    //        return
         };
-        evt.currentTarget.setAttribute('stroke', flux_state?"#000":"");
-        evt.currentTarget.setAttribute('strokeWidth', flux_state ? 0 : 5);
-        evt.currentTarget.setAttribute('fill', flux_state ? "#fff" : "");
+        Session.set(flux_id, !flux_state);
+        evt.currentTarget.classList.toggle('off', !flux_state);
     };
 
-    Session.set(flux_id, !flux_state);
-    spark.callFunction(Session.get('devId'), 'led', flux_state? 'flux_1_off':'flux_1_on', cb);
+    // TODO: create decent api call here. For this, a pinout is needed. 
+    // option to do the pinout is simply take the index of the element.
+    // a better option is to store in the database a pin list with associated element.id, allowing for common pins
+    //
+    spark.callFunction(Session.get('devId'), 'led', flux_state? 'flux_1_on':'flux_1_off', cb);
 }
 
 Template.fluxelmap.events({
   "click .st0": function(evt) {
     // Set the checked property to the opposite of its current value
-    console.log("flug: " + this.id + " Clicked!");
-
+    console.log("index: " + $('.fluxelmap .st0').index(evt.currentTarget));
+    fluxelclick(evt);
+    /*
     switch (evt.currentTarget.id) {
       case "XMLID_24_":
         console.log("Flux 1 clicked");
@@ -84,7 +87,6 @@ Template.fluxelmap.events({
       default:
         console.log("other clicked");
     }
-    fluxelclick(evt);
-    //Session.set('toggle1', ! Session.get('toggle1'));
+    */
   }
 });
