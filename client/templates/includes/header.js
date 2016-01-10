@@ -1,9 +1,6 @@
-/**
- * Created by halo on 02/01/15.
- */
-
 Template.header.helpers({
     activeRouteClass: function(/* route names */) {
+        // what is this?
         var args = Array.prototype.slice.call(arguments, 0);
         args.pop();
 
@@ -13,5 +10,9 @@ Template.header.helpers({
         });
         //console.log("header here: " + active);
         return active && 'active';
+    },
+    'devices': function(){
+        //TODO: filter on userId
+        return Hardware.find({}, {sort: {createdAt: -1}});
     }
 });

@@ -1,4 +1,5 @@
-Template.fluxSelect.rendered = function() {
+Template.fluxelmap.rendered = function() {
+    console.log('this is flux template');
   // init.
   if(Session.get('accessToken')) {
       spark.login({
@@ -34,7 +35,7 @@ var fluxelclick = function(evt) {
     spark.callFunction(Session.get('devId'), 'led', flux_state? 'flux_1_off':'flux_1_on', cb);
 }
 
-Template.fluxSelect.events({
+Template.fluxelmap.events({
   "click .st0": function(evt) {
     // Set the checked property to the opposite of its current value
     console.log("flug: " + this.id + " Clicked!");
