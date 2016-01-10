@@ -37,25 +37,29 @@ header {
   display: block;
 }
 
-h1 {
-  font-size: 1.5em;
-  margin: 0;
-  margin-bottom: 10px;
-  display: inline-block;
-  margin-right: 1em;
-}
-
 form {
   margin-top: 10px;
-  margin-bottom: -10px;
+  margin-bottom: 10px;
   position: relative;
   display: inline-block;
 }
 
-ul {
+#devices ul {
   margin: 0;
   padding: 0;
-  background: white;
+}
+#devices ul li {
+  transition: color 0.5s ease;
+  margin-left: 10px;
+}
+#devices ul li:hover {
+  color: #fad612;
+}
+#devices ul li.active {
+  color: #fad612;
+}
+#devices ul li.active:before {
+  content: "\2192";
 }
 
 #menu {

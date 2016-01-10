@@ -17,9 +17,12 @@
     {{/if}}
     
     <div id=devices>
-    {{#each devices}}
-    {{> device_listing}}
-    {{/each}}
+      <b>Devices:</b>
+      <ul>
+      {{#each devices}}
+      {{> device_listing}}
+      {{/each}}
+      </ul>
     </div>
   </section>
 
@@ -36,8 +39,7 @@
 </template>
 
 <template name="device_listing">
-<div>
-name:
+<li>
   {{ name }}
-</div>
+</li>
 </template>
