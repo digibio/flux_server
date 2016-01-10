@@ -16,9 +16,11 @@
     </form>
     {{/if}}
     
-    {{#each device}}
-    {{>template device_listing}}
+    <div id=devices>
+    {{#each devices}}
+    {{> device_listing}}
     {{/each}}
+    </div>
   </section>
 
   <div id="content">
@@ -34,5 +36,8 @@
 </template>
 
 <template name="device_listing">
+<div>
+name:
   {{ name }}
+</div>
 </template>

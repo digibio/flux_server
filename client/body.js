@@ -1,17 +1,26 @@
 Template.body.events({
     'submit .add_device': function(e){
         e.preventDefault();
-        console.log('adding device', e);
         Meteor.call('addDevice', {
             name: e.target.name.value,
             devId: e.target.devId.value,
-            AccessToken: e.target.accessToken.value
+            accessToken: e.target.accessToken.value
+        }, function(err, data) {
+            if(err) {
+                console.log('error occured adding device');
+                //todo: error message in form
+            }
+            e.target.name.value = '';
+            e.target.devId.value = '';
+            e.target.accessToken.value = '';
         });
+        
     }
 });
 
 Template.body.helpers({
     'devices': function(){
-        return Hardware.find({user: this.userId()});
+        //TODO: filter on userId
+        return Hardware.find();
     }
 });
