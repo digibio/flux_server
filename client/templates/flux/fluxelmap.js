@@ -1,6 +1,4 @@
 Template.fluxelmap.rendered = function() {
-    console.log('this is flux template');
-  // init.
   if(Session.get('accessToken')) {
       spark.login({
           accessToken: Session.get('accessToken')
