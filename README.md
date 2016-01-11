@@ -8,11 +8,13 @@ being in early development stages, the only supported prototyping interface is a
 right now, only pinouts are being controlled. This is to be overlayed with a semantic layer representing the network edges between the addressed fluxels, so that droplet algorithms can be run on it. 
 
 This is a meteor project. To run it, install meteor (www.meteor.com) and simply type: `meteor` on the command line. 
-because it is for prototyping, all collections are autopublish and insecure are still on.  
+Autopublish and insecure are still on, because of early development stage. This means it is not safe in terms of data protection.
 
 Todo for now: 
-1.
 - create a record-and-play interface for the fluxel algorithm
-- create api for the algorithm, which can transfer the algorithm down to the hardware interface and receive information back about the updated state
-2.
-- create database storing a users' devices - and preferably associated fluxel template - where new devices can be found and connected
+- create api for the algorithm
+  - needed is for single pinout changes to be communicated, including feedback of new state
+  - complete algorithms to be transferred including speeds. Feedback about proper receiving. It will start running the algoritm immediately. 
+  - a complete pin readout of all pin states
+  - Afterwards: the device should send back information to the API when pinouts or other stuff changes - make it responsive
+  - Afterwards: preferably setup an open websocket to reduce latency
