@@ -1,0 +1,17 @@
+<template name="devicesList">
+
+    devices list to do get devices from collection for user
+
+    <div id=devices>
+        <b>Devices:</b>
+        <ul>
+            {{#each devices}} {{> device_listing}} {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="device_listing">
+    <li>
+        <a href="{{pathFor 'fluxelmap'}}">{{ name }}</a>
+    </li>
+</template>
