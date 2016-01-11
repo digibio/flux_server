@@ -13,6 +13,6 @@ Template.header.helpers({
     },
     'devices': function(){
         //TODO: filter on userId
-        return Hardware.find({}, {sort: {createdAt: -1}});
+        return Hardware.find({owner: Meteor.userId()}, {sort: {createdAt: -1}});
     }
 });

@@ -1,4 +1,13 @@
-nav img.digibio_logo {
+nav .title.navbar-brand {
+  color: #3D73B9;
+}
+nav .navbar-brand.navbar_digibio_logo {
+  font-style: italic;
+  color: #99BDBD;
+  font-size: smaller;
+}
+nav .navbar_digibio_logo img.digibio_logo {
   height: 100%;
   display: inline;
+  margin-left: 5px;
 }
