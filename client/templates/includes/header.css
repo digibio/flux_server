@@ -6,6 +6,11 @@ nav .navbar-brand.navbar_digibio_logo {
   color: #99BDBD;
   font-size: smaller;
 }
+nav .navbar-brand img.fluxelserver_logo {
+  height: 100%;
+  display: inline;
+  margin-right: 10px;
+}
 nav .navbar_digibio_logo img.digibio_logo {
   height: 100%;
   display: inline;
