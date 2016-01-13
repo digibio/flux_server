@@ -1,18 +1,22 @@
 nav .title.navbar-brand {
+  transition: color 0.4s ease;
   color: #3D73B9;
 }
 nav .navbar-brand.navbar_digibio_logo {
+  transition: color 0.4s ease;
   font-style: italic;
   color: #99BDBD;
   font-size: smaller;
+  margin-top: -10px;
+}
+nav .navbar-brand.navbar_digibio_logo img.digibio_logo {
+  height: 200%;
+  display: inline;
+  margin-left: 5px;
 }
 nav .navbar-brand img.fluxelserver_logo {
   height: 100%;
   display: inline;
   margin-right: 10px;
 }
-nav .navbar_digibio_logo img.digibio_logo {
-  height: 100%;
-  display: inline;
-  margin-left: 5px;
-}
+
