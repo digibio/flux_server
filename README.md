@@ -1,7 +1,8 @@
-Digi.bio flux server
+Digi.bio fluxl server
 
-description:
-this software provides a web based control interface to dmf hardware. It provides an API which will allow communication from any means of defining droplet movements, there being manual, AI, or with external design software, to any piece of hardware supporting the API.
+I am not really sure about correct spelling: fluxel or fluxl, I have encountered both. So I will just arbitrarily use either until people land on a formal spelling/definition.
+
+This software aims to provide a web based control interface to dmf hardware. It provides an API which will allow communication from any means of defining droplet movements, there being manual, AI, or with external design software, to any piece of hardware supporting the API.
 
 being in early development stages, the only supported prototyping interface is a particle photon. This is to be extended to other types of hardware. 
 
@@ -27,3 +28,5 @@ Todo for now:
   - Afterwards: the device should send back information to the API when pinouts or other stuff changes - make it responsive
   - Afterwards: preferably setup an open websocket to reduce latency
 
+Code is published under MIT license. If you care to use it, or even fork and modify it, please consider sending a merge request or letting us know of your progress, at least sending a short mail saying 'thanks'. 
+Issues and feature requests are also always welcome. 
